@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Powitanie</string>
     <string name="screen_title">Powitanie</string>
+    <string name="hint_name">Wpisz swoje imię</string>
 </resources>
