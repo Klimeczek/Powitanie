@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnGreet;
     private TextView tvResult;
     private CheckBox cbShout;
+    private Button btnClear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         btnGreet = findViewById(R.id.btnGreet);
         tvResult = findViewById(R.id.tvResult);
         cbShout = findViewById(R.id.cbShout);
+        btnClear = findViewById(R.id.btnClear);
 
         btnGreet.setOnClickListener(v -> {
             if (cbShout.isChecked()) {
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 greet();
             }
         });
+
+        btnClear.setOnClickListener(v -> clear());
 
     }
 
@@ -66,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         tvResult.setText(getString(R.string.greeting, name).toUpperCase());
+    }
+
+    private void clear() {
+        tvResult.setText("");
+        etName.setText("");
     }
 
 }
