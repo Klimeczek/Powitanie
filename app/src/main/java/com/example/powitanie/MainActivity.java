@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.CheckBox;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etName;
     private Button btnGreet;
     private TextView tvResult;
+    private CheckBox cbShout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +34,16 @@ public class MainActivity extends AppCompatActivity {
         etName = findViewById(R.id.etName);
         btnGreet = findViewById(R.id.btnGreet);
         tvResult = findViewById(R.id.tvResult);
+        cbShout = findViewById(R.id.cbShout);
 
-        btnGreet.setOnClickListener(v -> greet());
+        btnGreet.setOnClickListener(v -> {
+            if (cbShout.isChecked()) {
+                greetUpper();
+            } else {
+                greet();
+            }
+        });
+
     }
 
     private void greet() {
@@ -45,6 +55,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         tvResult.setText(getString(R.string.greeting, name));
+    }
+
+    private void greetUpper() {
+        String name = etName.getText().toString().trim();
+
+        if (name.isEmpty()) {
+            Toast.makeText(this, R.string.error_empty_name, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        tvResult.setText(getString(R.string.greeting, name).toUpperCase());
     }
 
 }
