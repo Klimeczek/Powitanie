@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
 
     private EditText etName;
+    private Button btnGreet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,5 +29,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         etName = findViewById(R.id.etName);
+        btnGreet = findViewById(R.id.btnGreet);
     }
 }
